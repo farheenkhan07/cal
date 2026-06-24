@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    body {
+        background-color: #e9e6f3;
+        
+    }
+</style>
+<body>
+
+
+<input type="text" placeholder="Enter first no" id="ip1">
+<input type="text" placeholder="Enter second no" id="ip2">
+<button onclick="add()">Add</button>
+<p id="result"></p>
+
+
+
+</body>
+
+<script>
+    function add() {
+      let v1 = document.getElementById("ip1").value
+      let v2 = document.getElementById("ip2").value
+ document.getElementById("result").innerText= v1+v2;
+ console.log("addition is :", v1+v2)
+         
+    
+    }
+
+</script>
+</html>
