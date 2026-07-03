@@ -25,14 +25,28 @@
 </body>
 
 <script>
-    function add() {
-      let v1 = document.getElementById("ip1").value
-      let v2 = document.getElementById("ip2").value
- document.getElementById("result").innerText= v1+v2;
- console.log("addition is :", v1+v2)
-         
-    
+    const SPLUNK_URL   = 'https://prd-p-wb8kq.splunkcloud.com:8088/services/collector/event';
+    const SPLUNK_TOKEN = '36c8fa8b-29b0-4bc8-8759-d9b96577dd82';
+
+    function logToSplunk(action, details = {}) {
+        fetch(SPLUNK_URL, {
+            method:  'POST',
+            headers: { 'Authorization': `Splunk ${SPLUNK_TOKEN}` },
+            body:    JSON.stringify({
+                sourcetype: 'calculator_app',
+                event: { action, ...details, timestamp: new Date().toISOString() }
+            }),
+        }).catch(() => {});
     }
 
+    function add() {
+      let v1 = parseInt(document.getElementById("ip1").value)
+      let v2 = parseInt(document.getElementById("ip2").value)
+      document.getElementById("result").innerText = v1+v2;
+      console.log("addition is :", v1+v2)
+      logToSplunk('calculation_performed', { v1, v2, result: v1+v2 });
+    }
+
+    logToSplunk('app_loaded');
 </script>
 </html>
