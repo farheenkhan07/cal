@@ -43,8 +43,8 @@
       let v1 = parseInt(document.getElementById("ip1").value)
       let v2 = parseInt(document.getElementById("ip2").value)
       document.getElementById("result").innerText = v1+v2;
-      console.log("addition is :", v1+v2)
-      logToSplunk('calculation_performed', { v1, v2, result: v1+v2 });
+      console.log("addition is  ", v1+v2)
+      logToSplunk('clculation_performed', { v1, v2, result: v1+v2 });
     }
 
     logToSplunk('app_loaded');
