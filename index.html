@@ -25,8 +25,8 @@
 </body>
 
 <script>
-    const SPLUNK_URL   = 'https://prd-p-wb8kq.splunkcloud.com:8088/services/collector/event';
-    const SPLUNK_TOKEN = '36c8fa8b-29b0-4bc8-8759-d9b96577dd82';
+        const SPLUNK_URL   = 'https://splunk-proxy.farheenk3232.workers.dev';
+        const SPLUNK_TOKEN = '36c8fa8b-29b0-4bc8-8759-d9b96577dd82';
 
     function logToSplunk(action, details = {}) {
         fetch(SPLUNK_URL, {
